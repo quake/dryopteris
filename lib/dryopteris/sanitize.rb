@@ -15,7 +15,7 @@ module Dryopteris
       doc = Nokogiri::HTML.parse(string_or_io, nil, encoding)
       body_element = doc.at("/html/body")
       return "" if body_element.nil?
-      body_element.inner_text
+      CGI.escapeHTML body_element.inner_text
     end
     
     def sanitize(string, encoding=nil)

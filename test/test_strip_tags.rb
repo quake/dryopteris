@@ -31,5 +31,10 @@ class TestStripTags < Test::Unit::TestCase
     html = "<p>Foo</p>\n<p>Bar</p>"
     assert_equal "Foo\nBar", Dryopteris.strip_tags(html)
   end
+
+  def test_dont_unescape_html_tag
+    html = "<p>1 &lt; 3</p>"
+    assert_equal "1 &lt; 3", Dryopteris.strip_tags(html)
+  end
   
 end
